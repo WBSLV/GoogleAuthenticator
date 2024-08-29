@@ -16,8 +16,7 @@ namespace Sonata\GoogleAuthenticator;
 /**
  * Responsible for QR image url generation.
  *
- * @see http://goqr.me/api/
- * @see http://goqr.me/api/doc/
+ * @see https://developers.google.com/chart/infographics/docs/qr_codes
  * @see https://github.com/google/google-authenticator/wiki/Key-Uri-Format
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
@@ -82,7 +81,7 @@ final class GoogleQrUrl
         $otpauthString = rawurlencode(sprintf($otpauthString, $label, $secret, $issuer));
 
         return sprintf(
-            'https://api.qrserver.com/v1/create-qr-code/?size=%1$dx%1$d&data=%2$s&ecc=M',
+            'https://chart.googleapis.com/chart?chs=%1$dx%1$d&chld=M|0&cht=qr&chl=%2$s',
             $size,
             $otpauthString
         );
